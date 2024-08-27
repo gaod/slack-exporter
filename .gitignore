@@ -52,3 +52,6 @@ go.work
 # Dist
 dist/
 bin/
+
+export/
+slack-exporter.log
