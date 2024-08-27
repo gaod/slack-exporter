@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/mrmoneyc/slack-exporter/pkg/config"
@@ -151,17 +152,29 @@ func SaveMessages(cfg *config.Config, messages []slack.Message, channelName stri
 			}
 		}
 	} else {
-		msgJsonPath := filepath.Join(exportPath, "messages.json")
-		log.Debugf("export file path: %s", msgJsonPath)
+		downloadToken := cfg.DownloadToken
 
-		msgJson, err := json.MarshalIndent(messages, "", "  ")
-		if err != nil {
-			return err
+		for _, msg := range messages {
+			for i, file := range msg.Files {
+				if strings.HasPrefix(file.URLPrivate, "https://files.slack.com/") {
+				    if downloadToken != "" {
+				        msg.Files[i].URLPrivate = fmt.Sprintf("%s?t=%s", file.URLPrivate, downloadToken)
+					}
+				}
+			}
 		}
+	}
 
-		if err := ioutil.WriteFile(msgJsonPath, msgJson, 0644); err != nil {
-			return err
-		}
+	msgJsonPath := filepath.Join(exportPath, "messages.json")
+	log.Debugf("export file path: %s", msgJsonPath)
+
+	msgJson, err := json.MarshalIndent(messages, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	if err := ioutil.WriteFile(msgJsonPath, msgJson, 0644); err != nil {
+		return err
 	}
 
 	return nil
