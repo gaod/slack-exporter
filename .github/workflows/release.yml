@@ -39,5 +39,4 @@ jobs:
             dist/${{ steps.get_version.outputs.VERSION }}/slack-exporter-${{ steps.get_version.outputs.VERSION }}-linux-arm64.tar.gz
             dist/${{ steps.get_version.outputs.VERSION }}/slack-exporter-${{ steps.get_version.outputs.VERSION }}-darwin-amd64.tar.gz
             dist/${{ steps.get_version.outputs.VERSION }}/slack-exporter-${{ steps.get_version.outputs.VERSION }}-darwin-arm64.tar.gz
-            dist/${{ steps.get_version.outputs.VERSION }}/slack-exporter-${{ steps.get_version.outputs.VERSION }}-darwin-arm64.tar.gz
             dist/${{ steps.get_version.outputs.VERSION }}/slack-exporter-${{ steps.get_version.outputs.VERSION }}-windows-amd64.zip
