@@ -159,6 +159,7 @@ func SaveMessages(cfg *config.Config, messages []slack.Message, channelName stri
 				if strings.HasPrefix(file.URLPrivate, "https://files.slack.com/") {
 				    if downloadToken != "" {
 				        msg.Files[i].URLPrivate = fmt.Sprintf("%s?t=%s", file.URLPrivate, downloadToken)
+				        msg.Files[i].URLPrivateDownload = fmt.Sprintf("%s?t=%s", file.URLPrivateDownload, downloadToken)
 					}
 				}
 			}
