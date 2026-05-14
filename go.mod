@@ -1,10 +1,10 @@
 module github.com/mrmoneyc/slack-exporter
 
-go 1.19
+go 1.25
 
 require (
 	github.com/sirupsen/logrus v1.9.1
-	github.com/slack-go/slack v0.11.3
+	github.com/slack-go/slack v0.23.1
 	github.com/spf13/cobra v1.6.0
 	github.com/spf13/viper v1.13.0
 	golang.org/x/exp v0.0.0-20221012211006-4de253d81b95
@@ -12,7 +12,7 @@ require (
 
 require (
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
-	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
